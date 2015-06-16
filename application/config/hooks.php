@@ -14,6 +14,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $hook['display_override'][] = array('class' => 'layout',
                                 'function' => 'show_layout',
-                                'filename' => 'layout.php',
+                                'filename' => 'Layout.php',
                                 'filepath' => 'hooks'
                                );
