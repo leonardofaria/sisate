@@ -64,10 +64,10 @@ class Evento extends \Entity\Evento implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'nome', '' . "\0" . 'Entity\\Evento' . "\0" . 'perfil', 'ativo');
+            return array('__isInitialized__', 'id', 'nome', '' . "\0" . 'Entity\\Evento' . "\0" . 'perfil', 'ativo', 'documento');
         }
 
-        return array('__isInitialized__', 'id', 'nome', '' . "\0" . 'Entity\\Evento' . "\0" . 'perfil', 'ativo');
+        return array('__isInitialized__', 'id', 'nome', '' . "\0" . 'Entity\\Evento' . "\0" . 'perfil', 'ativo', 'documento');
     }
 
     /**
@@ -252,6 +252,28 @@ class Evento extends \Entity\Evento implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAtivo', array($ativo));
 
         return parent::setAtivo($ativo);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDocumento()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDocumento', array());
+
+        return parent::getDocumento();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDocumento($documento)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDocumento', array($documento));
+
+        return parent::setDocumento($documento);
     }
 
 }

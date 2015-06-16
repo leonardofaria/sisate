@@ -334,7 +334,7 @@ class Processo extends \Entity\Processo implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addProcessoEvento(\Entity\ProcessoEvento $processoevento)
+    public function addProcessoEvento(\Entity\Processoevento $processoevento)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProcessoEvento', array($processoevento));
@@ -345,7 +345,7 @@ class Processo extends \Entity\Processo implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function removeProcessoEvento(\Entity\ProcessoEvento $processoevento)
+    public function removeProcessoEvento(\Entity\Processoevento $processoevento)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProcessoEvento', array($processoevento));
