@@ -18,7 +18,8 @@ class Processos extends MY_Controller {
 		$data = $this->processo->obterProcessos();
 
 		$this->pageTitle = 'Processos';
-		$this->load->view('processos/index', $data);
+		$output = $this->load->view('processos/index', $data);
+		echo $output;
 
 	}
 
