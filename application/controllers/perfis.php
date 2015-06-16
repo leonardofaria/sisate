@@ -32,5 +32,3 @@ class Perfis extends MY_Controller {
 
 	}
 }
-
-?>

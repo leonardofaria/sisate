@@ -32,5 +32,3 @@ class Orgaos extends MY_Controller {
 
 	}
 }
-
-?>

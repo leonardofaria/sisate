@@ -22,6 +22,9 @@ class Evento
   /** @Column(type="string") **/
   protected $ativo;
 
+  /** @Column(type="string") **/
+  protected $documento;
+
   public function getId()
   {
     return $this->id;
@@ -55,5 +58,15 @@ class Evento
   public function setAtivo($ativo)
   {
     $this->ativo = $ativo;
+  }
+
+  public function getDocumento()
+  {
+    return $this->documento;
+  }
+
+  public function setDocumento($documento)
+  {
+    $this->documento = $documento;
   }
 }

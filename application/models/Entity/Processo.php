@@ -25,7 +25,7 @@ class Processo
   // protected $upload;
 
   /**
-   * @OneToMany(targetEntity="ProcessoEvento", mappedBy="processo", cascade={"persist", "remove"}, orphanRemoval=TRUE)
+   * @OneToMany(targetEntity="Processoevento", mappedBy="processo", cascade={"persist", "remove"}, orphanRemoval=TRUE)
    */
   protected $processoeventos;
 
@@ -105,7 +105,7 @@ class Processo
     return array_reverse($eventos);
   }
 
-  public function addProcessoEvento(ProcessoEvento $processoevento)
+  public function addProcessoEvento(Processoevento $processoevento)
   {
     if (!$this->processoeventos->contains($processoevento)) {
       $this->processoeventos->add($processoevento);
@@ -115,7 +115,7 @@ class Processo
     return $this;
   }
 
-  public function removeProcessoEvento(ProcessoEvento $processoevento)
+  public function removeProcessoEvento(Processoevento $processoevento)
   {
     if ($this->processoeventos->contains($processoevento)) {
       $this->processoeventos->removeElement($processoevento);

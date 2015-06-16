@@ -5,7 +5,7 @@ namespace Entity;
 /**
  * @Entity @Table(name="processos_eventos")
  */
-class ProcessoEvento
+class Processoevento
 {
   /** @Id @Column(type="integer") @GeneratedValue **/
   protected $id;

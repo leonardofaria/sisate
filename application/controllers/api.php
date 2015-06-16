@@ -119,5 +119,3 @@ class Api extends MY_Controller {
 		echo json_encode($json);
 	}
 }
-
-?>

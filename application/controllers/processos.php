@@ -70,9 +70,10 @@ class Processos extends MY_Controller {
 			$objeto = $this->inss->formataProtocolo($data['processo']->getCtc());
 		}
 		$this->pageTitle = 'Processo ' . $objeto;
-		$this->load->view('processos/visualizar', $data);
-		$this->load->view('processos/form_analisar', $data);
-		$this->load->view('processos/form_encaminhar', $data);
+		$output1 = $this->load->view('processos/visualizar', $data, true);
+		$output2 = $this->load->view('processos/form_analisar', $data, true);
+		$output3 = $this->load->view('processos/form_encaminhar', $data, true);
+		echo "$output1 $output2 $output3";
 
 	}
 

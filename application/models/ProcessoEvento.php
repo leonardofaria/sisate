@@ -1,6 +1,6 @@
 <?php
 
-class ProcessoEvento extends MY_Model {
+class Processoevento extends MY_Model {
 
 	public $rules = array(
 		/*

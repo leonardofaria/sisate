@@ -19,5 +19,3 @@ class Ajuda extends MY_Controller {
 
 	}
 }
-
-?>

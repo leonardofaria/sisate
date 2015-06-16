@@ -26,7 +26,7 @@ class Usuario extends MY_Model {
 		'email' => array(
 			'field' => 'email',
 			'label' => 'E-mail',
-			'rules' => 'trim|required|email',
+			'rules' => 'trim|required',
 			'errors' => array(
 				'required' => 'É necessário informar o e-mail',
 				'email' => 'E-mail inválido'

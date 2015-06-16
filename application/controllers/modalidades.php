@@ -32,5 +32,3 @@ class Modalidades extends MY_Controller {
 
 	}
 }
-
-?>

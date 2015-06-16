@@ -32,5 +32,3 @@ class Eventos extends MY_Controller {
 
 	}
 }
-
-?>

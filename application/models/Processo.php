@@ -55,7 +55,7 @@ class Processo extends MY_Model {
 		$processo->setOrgaoatual($orgao);
 		$this->doctrine->em->persist($processo);
 
-		$processo_evento = new Entity\ProcessoEvento();
+		$processo_evento = new Entity\Processoevento();
 		$processo_evento->setComplemento('');
 		$processo_evento->setCriado(new \DateTime("now"));
 		$processo_evento->setProcesso($processo);
