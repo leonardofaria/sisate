@@ -30,6 +30,7 @@
 							<span class="glyphicon glyphicon-home"></span>
 						</a>
 					</li>
+					<?php if (in_array($this->perfil_id, array(1, 2))) { ?>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu<strong class="caret"></strong></a>
 						<ul class="dropdown-menu">
@@ -50,6 +51,7 @@
 							<?php } ?>
 						</ul>
 					</li>
+					<?php } ?>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -80,9 +82,9 @@
 					</li>
 				</ul>
 
-				<form role="search" class="navbar-form navbar-right" style="margin-bottom: 5px; margin-top: 7px;">
+				<form role="search" class="navbar-form navbar-right" style="margin-bottom: 5px; margin-top: 7px;" method="post" action="<?php echo base_url('processos/buscar/'); ?>">
 					<div class="input-group">
-						<input type="text" class="form-control" size="15" placeholder="Buscar">
+						<input type="text" name="busca" class="form-control" size="15" placeholder="Buscar">
 					</div>
 				</form>
 			</div>

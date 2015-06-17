@@ -109,7 +109,7 @@ class Processo extends MY_Model {
 		*/
 
 		// Processos no SST (Gestor)
-		if ($this->orgao_modalidade_id == 2 && $this->perfil_id == 3) {
+		if ($this->orgao_modalidade_id == 2 && in_array($this->perfil_id, array(1, 3))) {
 			$data['processos_usuarios'] = $this->processo->obterProcessosSST($this->ol);
 		} else if ($this->orgao_modalidade_id == 2 && $this->perfil_id == 4) {
 			// Processos no SST (Médico) - só carrega seus respectivos processos
@@ -157,4 +157,9 @@ class Processo extends MY_Model {
 
 	}
 
+	public function buscarProcessos($busca) {
+
+		return $this->processo->find(array('nb' => return_numbers($busca)));
+
+	}
 }

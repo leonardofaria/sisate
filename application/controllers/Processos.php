@@ -22,18 +22,41 @@ class Processos extends MY_Controller {
 
 	}
 
+	function buscar() {
+
+		$data['processos'] = $this->processo->buscarProcessos($this->input->post('busca'));
+		$this->pageTitle = 'Buscar: ' . $this->input->post('busca');
+
+		if (count($data['processos']) > 1)
+		{
+			$this->load->view('processos/buscar', $data);
+		}
+		else if (count($data['processos']) == 1)
+		{
+			$id = $data['processos'][0]->getId();
+			redirect(base_url('processos/visualizar/' . $id));
+		}
+		else
+		{
+			$this->session->set_flashdata('message_error', 'Nenhum processo encontrado');
+			redirect(base_url());
+		}
+
+	}
+
 	function cadastrar() {
 
 		$this->form_validation->set_rules($this->processo->rules);
 
-		if (!$this->form_validation->run()) {
-
+		if (!$this->form_validation->run())
+		{
 			$data['select_opts'] = $this->orgao->select_opts();
 
 			$this->pageTitle = 'Cadastrar Processo';
 			$this->load->view('processos/form', $data);
-
-		} else {
+		}
+		else
+		{
 
 			$id = $this->processo->inserir();
 			$this->session->set_flashdata('message_success', 'Processo cadastrado com sucesso!');
@@ -64,9 +87,12 @@ class Processos extends MY_Controller {
 		$data['siape'] = $this->siape;
 		$data['orgao_id'] = $this->orgao_id;
 
-		if ($data['processo']->getNb()) {
+		if ($data['processo']->getNb())
+		{
 			$objeto = $this->inss->formataProtocolo($data['processo']->getNb());
-		} else {
+		}
+		else
+		{
 			$objeto = $this->inss->formataProtocolo($data['processo']->getCtc());
 		}
 		$this->pageTitle = 'Processo ' . $objeto;
@@ -101,10 +127,9 @@ class Processos extends MY_Controller {
 
 		$this->form_validation->set_rules($this->processoevento->rules);
 
-		if (!$this->form_validation->run()) {
+		if (!$this->form_validation->run())
+		{
 			echo "Erro";
-		} else {
-
 		}
 
 		$this->session->set_flashdata('message_success', 'Evento lançado com sucesso!');
