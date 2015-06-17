@@ -64,10 +64,10 @@ class Processo extends \Entity\Processo implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'nb', 'ctc', 'criado', 'modificado', 'orgaoresponsavel', 'orgaoatual', 'processoeventos');
+            return array('__isInitialized__', 'id', 'nb', 'ctc', 'criado', 'modificado', 'orgaoresponsavel', 'orgaoatual', 'ultimoevento', 'processoeventos');
         }
 
-        return array('__isInitialized__', 'id', 'nb', 'ctc', 'criado', 'modificado', 'orgaoresponsavel', 'orgaoatual', 'processoeventos');
+        return array('__isInitialized__', 'id', 'nb', 'ctc', 'criado', 'modificado', 'orgaoresponsavel', 'orgaoatual', 'ultimoevento', 'processoeventos');
     }
 
     /**
@@ -318,6 +318,28 @@ class Processo extends \Entity\Processo implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrgaoAtual', array($orgaoatual));
 
         return parent::setOrgaoAtual($orgaoatual);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUltimoevento()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUltimoevento', array());
+
+        return parent::getUltimoevento();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUltimoevento($ultimoevento)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUltimoevento', array($ultimoevento));
+
+        return parent::setUltimoevento($ultimoevento);
     }
 
     /**

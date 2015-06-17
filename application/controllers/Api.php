@@ -41,6 +41,7 @@ class Api extends MY_Controller {
 
 	function processos() {
 
+		$this->load->model('evento');
 		$this->load->model('orgao');
 		$this->load->model('processo');
 
@@ -72,12 +73,22 @@ class Api extends MY_Controller {
 		$orgao = $this->orgao->find(array('ol' => $this->ol))[0];
 		$per_page = 10;
 
-		$processos = $this->processo->find(array('orgaoatual' => $orgao->getId()), array($sort => $order), $page, $per_page);
+		$filter_not = array();
+		if ($orgao->getModalidade()->getId() == 2) {
+			$excluir_eventos = array(4, 5);
 
-		$total = $this->processo->count(array('orgaoatual' => $orgao->getId()), array(), $page);
+			foreach ($excluir_eventos as $evento_id) {
+				$evento = $this->evento->find(array('id' => $evento_id))[0];
+				$filter_not[] = array('ultimoevento' => $evento);
+			}
+		}
+
+		$processos = $this->processo->find(array('orgaoatual' => $orgao), array($sort => $order), $page, $per_page, $filter_not);
+
+		$total = $this->processo->count(array('orgaoatual' => $orgao), $filter_not);
 
 		$result = array('total' => $total);
-		$json = array();
+		$processo_temp = array();
 
 		foreach ($processos as $processo) {
 			if ($processo->getNb()) {
@@ -90,7 +101,7 @@ class Api extends MY_Controller {
 			if ($processo->getProcessoEventos()[0]->getComplemento()) {
 				$evento .= ' - ' . $processo->getProcessoEventos()[0]->getComplemento();
 			}
-			$json[] = array(
+			$processo_temp[] = array(
 				'id' => $processo->getId(),
 				'link' => '<a href="' . base_url('processos/visualizar/' . $processo->getId()) . '">' . $this->inss->formataProtocolo($objeto) . '</a>',
 				'objeto' => $this->inss->formataProtocolo($objeto),
@@ -99,7 +110,7 @@ class Api extends MY_Controller {
 				'orgao' => $processo->getOrgaoResponsavel()->getNome()
 				);
 		}
-		$result['rows'] = $json;
+		$result['rows'] = $processo_temp;
 
 		echo json_encode($result);
 

@@ -2,10 +2,35 @@
 
 class MY_Model extends CI_Model {
 
-  public function find($filter = array(), $order = array('id' => 'DESC'), $offset = 0, $per_page = 2000) {
+  public function find($filter = array(), $order = array('id' => 'DESC'), $offset = 0, $per_page = 2000, $filter_not = array()) {
 
     $query = $this->doctrine->em->getRepository("Entity\\" . get_class($this));
-    return $query->findBy($filter, $order, $per_page, $offset);
+    $criteria = new \Doctrine\Common\Collections\Criteria();
+
+    if (count($filter) > 0) {
+      foreach ($filter as $key => $value) {
+        $criteria->where($criteria->expr()->eq($key, $value));
+      }
+    }
+
+    $criteria->orderBy($order);
+    $criteria->setFirstResult($offset);
+    $criteria->setMaxResults($per_page);
+
+    if (count($filter_not) > 0) {
+
+      foreach ($filter_not as $filter_key => $filter_value) {
+        if (is_array($filter_value)) {
+          foreach ($filter_value as $filter_value_key => $filter_value_value) {
+            $criteria->andWhere($criteria->expr()->neq($filter_value_key, $filter_value_value));
+          }
+        } else {
+          $criteria->andWhere($criteria->expr()->neq($filter_key, $filter_value));
+        }
+      }
+    }
+
+    return $query->matching($criteria);
 
   }
 
@@ -28,10 +53,31 @@ class MY_Model extends CI_Model {
 
   }
 
-  public function count($filter = array()) {
+  public function count($filter = array(), $filter_not = array()) {
 
     $query = $this->doctrine->em->getRepository("Entity\\" . get_class($this));
-    return count($query->findBy($filter));
+    $criteria = new \Doctrine\Common\Collections\Criteria();
+
+    if (count($filter) > 0) {
+      foreach ($filter as $key => $value) {
+        $criteria->where($criteria->expr()->eq($key, $value));
+      }
+    }
+
+    if (count($filter_not) > 0) {
+
+      foreach ($filter_not as $filter_key => $filter_value) {
+        if (is_array($filter_value)) {
+          foreach ($filter_value as $filter_value_key => $filter_value_value) {
+            $criteria->andWhere($criteria->expr()->neq($filter_value_key, $filter_value_value));
+          }
+        } else {
+          $criteria->andWhere($criteria->expr()->neq($filter_key, $filter_value));
+        }
+      }
+    }
+
+    return count($query->matching($criteria));
 
   }
 

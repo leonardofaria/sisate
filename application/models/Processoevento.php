@@ -49,6 +49,7 @@ class Processoevento extends MY_Model {
 		}
 
 		$processo->addProcessoEvento($processo_evento);
+		$processo->setUltimoevento($evento);
 
 		$config = array('upload_path' => './uploads/', 'allowed_types' => 'pdf', 'max_size' => '2048', 'multi' => 'all');
 		$this->load->library('upload', $config);

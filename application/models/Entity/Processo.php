@@ -21,8 +21,8 @@ class Processo
   protected $orgaoresponsavel;
   /** @ManyToOne(targetEntity="Orgao") **/
   protected $orgaoatual;
-  /** @Column(type="string") **/
-  // protected $upload;
+  /** @ManyToOne(targetEntity="Evento") **/
+  protected $ultimoevento;
 
   /**
    * @OneToMany(targetEntity="Processoevento", mappedBy="processo", cascade={"persist", "remove"}, orphanRemoval=TRUE)
@@ -97,6 +97,16 @@ class Processo
   public function setOrgaoAtual($orgaoatual)
   {
     $this->orgaoatual = $orgaoatual;
+  }
+
+  public function getUltimoevento()
+  {
+    return $this->getProcessoEventos()[0]->getEvento();
+  }
+
+  public function setUltimoevento($ultimoevento)
+  {
+    $this->ultimoevento = $ultimoevento;
   }
 
   public function getProcessoEventos()
