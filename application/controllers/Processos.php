@@ -48,6 +48,10 @@ class Processos extends MY_Controller {
 	function cadastrar() {
 
 		$this->form_validation->set_rules($this->processo->rules);
+		if ($this->input->post('nb') === '' && $this->input->post('ctc') === '')
+		{
+			$this->form_validation->set_rules('nb', 'Número do Benefício', 'required');
+		}
 
 		if (!$this->form_validation->run())
 		{
@@ -58,7 +62,6 @@ class Processos extends MY_Controller {
 		}
 		else
 		{
-
 			$id = $this->processo->inserir();
 			$this->session->set_flashdata('message_success', 'Processo cadastrado com sucesso!');
 			redirect(base_url('processos/visualizar/' . $id));
@@ -84,6 +87,7 @@ class Processos extends MY_Controller {
 		$perfil = $this->perfil->find(array('id' => 4))[0];
 		$usuario = array('orgao' => $orgao, 'perfil' => $perfil);
 		$data['complemento_select_opts'] = $this->usuario->select_opts($usuario);
+		$data['id'] = $id;
 
 		if ($data['processo']->getNb())
 		{

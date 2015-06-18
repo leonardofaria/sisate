@@ -9,7 +9,7 @@
     <div class="form-group">
       <?php echo form_label('Número do Benefício', 'nb', array('class' => 'col-sm-2 control-label')); ?>
       <div class="col-sm-4">
-    	  <?php echo form_input(array('id' => 'nb', 'name' => 'nb', 'value' => set_value('nb'), 'class' => 'form-control', 'data-mask' => '999.999.999-9')); ?>
+    	  <?php echo form_input(array('id' => 'nb', 'name' => 'nb', 'value' => set_value('nb'), 'class' => 'form-control', 'data-mask' => '99/999.999.999-9')); ?>
     	</div>
       <div class="help-block with-errors"></div>
     </div>
@@ -33,18 +33,9 @@
     <div class="form-group">
       <?php echo form_label('Arquivos', 'nb', array('class' => 'col-sm-2 control-label')); ?>
       <div class="col-sm-8">
-        <?php // echo form_upload('uploadedfiles[]', '', 'multiple'); ?>
-
-        <div class="input-group">
-          <span class="input-group-btn">
-            <span class="btn btn-file">
-              Selecione <input type="file" name="uploadedfiles[]" multiple data-error="Campo obrigatório" required="required" />
-            </span>
-          </span>
-          <input type="text" class="form-control" readonly>
-        </div>
+        <?php echo form_upload(array('name' => 'uploadedfiles[]', 'multiple' => 'multiple', 'data-error' => 'É necessário anexar pelo menos um documento PDF', 'required' => 'required')); ?>
+        <div class="help-block with-errors"></div>
       </div>
-      <div class="help-block with-errors"></div>
     </div>
 
     <div class="form-group">

@@ -9,6 +9,26 @@ class Api extends MY_Controller {
 
 	}
 
+	function eventos() {
+
+		$this->load->model('evento');
+
+		$eventos = $this->evento->find();
+
+		$json = array();
+		foreach ($eventos as $evento) {
+			$json[] = array('id' => $evento->getId(),
+											'nome' => utf8_encode($evento->getNome()),
+											'ativo' => $evento->getAtivo(),
+											'documento' => $evento->getDocumento()
+								);
+
+		}
+
+		echo json_encode($json);
+
+	}
+
 	function modalidades() {
 
 		$this->load->model('modalidade');

@@ -6,34 +6,26 @@ class Processo extends MY_Model {
 		'orgao_responsavel' => array(
 			'field' => 'orgao_responsavel',
 			'label' => 'Orgão responsável',
-			'rules' => 'required',
-			'errors' => array(
-				'required' => 'É necessário informar o órgão responsável'
-			)
+			'rules' => 'required'
 		),
 
-		/*
 		'nb' => array(
 			'field' => 'nb',
 			'label' => 'Número do Benefício',
-			'rules' => 'trim|required|min_length[12]|max_length[12]|validar_protocolo',
+			'rules' => 'validar_protocolo',
 			'errors' => array(
-				'required' => 'O Número do Benefício é obrigatório',
-				'min_length' => 'O Número do Benefício deve ter 12 dígitos',
-				'max_length' => 'O Número do Benefício deve ter 12 dígitos',
 				'validar_protocolo' => 'O Número do Benefício é inválido'
 			)
 		),
 
-		'uploadedfiles[]' => array(
-			'field' => 'documento',
-			'label' => 'Documento',
-			'rules' => 'required',
+		'ctc' => array(
+			'field' => 'ctc',
+			'label' => 'CTC',
+			'rules' => 'validar_protocolo',
 			'errors' => array(
-				'required' => 'É necessário anexar pelo menos um documento PDF'
+				'validar_protocolo' => 'O número CTC é inválido'
 			)
-		)
-		*/
+		),
 	);
 
 	public function inserir() {
@@ -48,7 +40,19 @@ class Processo extends MY_Model {
 		$evento = $evento->findBy(array('id' => 1))[0];
 
 		$processo = new Entity\Processo();
-		$processo->setNb($this->input->post('nb'));
+		if ($this->input->post('nb') != '')
+		{
+			$processo->setNb(return_numbers($this->input->post('nb')));
+		}
+		else if ($this->input->post('ctc') != '')
+		{
+			$processo->setCtc(return_numbers($this->input->post('ctc')));
+		}
+		else
+		{
+			return false;
+		}
+
 		$processo->setCriado(new \DateTime("now"));
 		$processo->setModificado(new \DateTime("now"));
 		$processo->setOrgaoresponsavel($orgao);

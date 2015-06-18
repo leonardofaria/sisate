@@ -22,14 +22,39 @@ $(document).ready(function() {
 
 	});
 
-  $('#evento').on('change', function(e) {
+  (function() {
+    // Função anônima para obter um array
+    // dos eventos que exigem documento
+    $.getJSON("../../api/eventos", function(data) {
+      var eventos = [];
+      $.each(data, function(key, value) {
+        if (value.documento == 'S') {
+          eventos.push(value.id);
+        }
+      });
+
+      $('#analisar_evento').data('eventos', eventos);
+    });
+  })();
+
+  $('#analisar_evento').on('change', function(e) {
 
     var value = this.value;
 
     if (value == 4 || value == 5) {
       $('#form_complemento').show();
+      $('#analisar_arquivos').removeProp('required');
+      $('#analisar_arquivos').parent().parent().removeClass('has-error');
+      $('#analisar_arquivos_erro').html('');
+      $('#analisar_complemento').attr('required', 'required');
+    } else if ($.inArray(parseInt(value), $(this).data('eventos')) > -1) {
+      $('#form_complemento').hide();
+      $('#analisar_complemento').removeProp('required');
+      $('#analisar_arquivos').attr('required', 'required');
+      $('#analisar_arquivos_erro').show();
     } else {
       $('#form_complemento').hide();
+      $('#analisar_complemento, #analisar_arquivos').removeProp('required');
     }
 
   });
@@ -69,7 +94,8 @@ $(document).ready(function() {
       }
     });
   }
+
   if ($(window).height() >= 320){
-      $(window).resize(adjustModalMaxHeightAndPosition).trigger("resize");
+    $(window).resize(adjustModalMaxHeightAndPosition).trigger("resize");
   }
 });
