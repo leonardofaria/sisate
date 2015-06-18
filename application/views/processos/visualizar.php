@@ -6,7 +6,7 @@
 		<b>APS Responsável:</b> <?php echo $processo->getOrgaoResponsavel()->getNome(); ?> <br/>
 		<b>Órgão Atual:</b> <?php echo $processo->getOrgaoAtual()->getNome(); ?> <br/>
 
-		<?php if ($processo->getOrgaoAtual()->getId() == $orgao_id) { ?>
+		<?php if ($processo->getOrgaoAtual()->getId() == $this->orgao_id) { ?>
 		<br/>
 		<p class="text-center">
 			<a href="#" class="action" data-toggle="modal" data-target="#analisar_modal"><span class="glyphicon glyphicon-edit"></span> Analisar</a>
