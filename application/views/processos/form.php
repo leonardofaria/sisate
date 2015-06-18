@@ -9,7 +9,7 @@
     <div class="form-group">
       <?php echo form_label('Número do Benefício', 'nb', array('class' => 'col-sm-2 control-label')); ?>
       <div class="col-sm-4">
-    	  <?php echo form_input(array('id' => 'nb', 'name' => 'nb', 'value' => set_value('nb'), 'class' => 'form-control')); ?>
+    	  <?php echo form_input(array('id' => 'nb', 'name' => 'nb', 'value' => set_value('nb'), 'class' => 'form-control', 'data-mask' => '999.999.999-9')); ?>
     	</div>
       <div class="help-block with-errors"></div>
     </div>
@@ -17,7 +17,7 @@
     <div class="form-group">
       <?php echo form_label('CTC', 'ctc', array('class' => 'col-sm-2 control-label')); ?>
       <div class="col-sm-4">
-        <?php echo form_input(array('id' => 'ctc', 'name' => 'ctc', 'value' => set_value('ctc'), 'class' => 'form-control')); ?>
+        <?php echo form_input(array('id' => 'ctc', 'name' => 'ctc', 'value' => set_value('ctc'), 'class' => 'form-control', 'data-mask' => '99999999.9.99999/99-9')); ?>
       </div>
       <div class="help-block with-errors"></div>
     </div>
@@ -38,7 +38,7 @@
         <div class="input-group">
           <span class="input-group-btn">
             <span class="btn btn-file">
-              Selecione <input type="file" name="uploadedfiles[]" multiple  data-error="Campo obrigatório" required="required" />
+              Selecione <input type="file" name="uploadedfiles[]" multiple data-error="Campo obrigatório" required="required" />
             </span>
           </span>
           <input type="text" class="form-control" readonly>

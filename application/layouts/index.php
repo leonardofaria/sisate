@@ -84,7 +84,7 @@
 
 				<form role="search" class="navbar-form navbar-right" style="margin-bottom: 5px; margin-top: 7px;" method="post" action="<?php echo base_url('processos/buscar/'); ?>">
 					<div class="input-group">
-						<input type="text" name="busca" class="form-control" size="15" placeholder="Buscar">
+						<input type="text" name="busca" class="form-control" size="20" placeholder="Pesquisar">
 					</div>
 				</form>
 			</div>
@@ -139,6 +139,7 @@
 <script type="text/javascript" src="<?php echo base_url('assets/js/validator.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-table/bootstrap-table.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-table/locale/bootstrap-table-pt-BR.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.mask.min.js'); ?>"></script>
 <script type="text/javascript">$(document).ready(function() { $.material.init(); });</script>
 <?php
 
