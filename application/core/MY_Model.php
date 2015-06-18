@@ -18,6 +18,7 @@ class MY_Model extends CI_Model {
    */
   public function find($filter = array(), $order = array('id' => 'DESC'), $offset = 0, $per_page = 2000, $filter_not = array())
   {
+    // TODO: Refatorar para melhorar o uso de expressões eq, like, neq, etc.
 
     $query = $this->doctrine->em->getRepository("Entity\\" . get_class($this));
     $criteria = new \Doctrine\Common\Collections\Criteria();
@@ -26,11 +27,14 @@ class MY_Model extends CI_Model {
     {
       foreach ($filter as $key => $value)
       {
-        // if ($key === "nb" || $key === "ctc") {
-        //   $criteria->where($criteria->expr()->like($key, $value));
-        // } else {
+        if ($key === "nb" || $key === "ctc")
+        {
+          $criteria->where($criteria->expr()->contains($key, $value));
+        }
+        else
+        {
           $criteria->where($criteria->expr()->eq($key, $value));
-        // }
+        }
       }
     }
 
@@ -78,6 +82,7 @@ class MY_Model extends CI_Model {
 
     foreach ($results as $row)
     {
+      // TODO: Refatorar esse método para personalizar o <option> obtido
       if (get_class($this) === 'Orgao') {
         $options[$row->getId()] = $row->getOl() . ' - ' . $row->getNome();
       } else {
