@@ -11,10 +11,40 @@ class Orgaos extends MY_Controller {
 
 	function index() {
 
-		$data['orgaos'] = $this->orgao->find();
+		$data['orgaos'] = $this->orgao->find(array(), array('ol' => 'ASC'));
 
 		$this->pageTitle = 'Orgãos';
 		$this->load->view('orgaos/index', $data);
+
+	}
+
+	function cadastrar() {
+
+		$this->load->model('modalidade');
+
+		$this->form_validation->set_rules($this->orgao->rules);
+
+		if (!$this->form_validation->run()) {
+
+			$data['modalidade_select_opts'] = $this->modalidade->select_opts();
+
+			$this->pageTitle = 'Cadastrar Órgão';
+			$this->load->view('orgaos/form', $data);
+
+		} else {
+
+			$dados = array(
+				'ol' => $this->input->post('ol'),
+				'nome' => $this->input->post('nome'),
+				'modalidade' => $this->input->post('modalidade')
+				);
+			if ($this->orgao->adicionarOrgao($dados)) {
+				$this->session->set_flashdata('message_success', 'Órgão cadastrado com sucesso!');
+			} else {
+				$this->session->set_flashdata('message_error', 'Houve um erro');
+			}
+			redirect(base_url('orgaos'));
+		}
 
 	}
 

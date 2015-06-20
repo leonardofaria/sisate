@@ -2,6 +2,26 @@
 
 class Orgao extends MY_Model {
 
+	public $rules = array(
+		'nome' => array(
+			'field' => 'nome',
+			'label' => 'Nome',
+			'rules' => 'required'
+		),
+
+		'ol' => array(
+			'field' => 'ol',
+			'label' => 'OL',
+			'rules' => 'required'
+		),
+
+		'modalidade' => array(
+			'field' => 'modalidade',
+			'label' => 'Modalidade',
+			'rules' => 'required'
+		),
+	);
+
 	public function __construct() {
 		parent::__construct();
 	}

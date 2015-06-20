@@ -1,4 +1,4 @@
-<a href="#" class="btn btn-primary btn-new pull-right">
+<a href="<?php echo base_url('orgaos/cadastrar'); ?>" class="btn btn-primary btn-new pull-right">
   Cadastrar orgão
 </a>
 

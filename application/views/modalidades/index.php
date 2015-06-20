@@ -1,4 +1,4 @@
-<a href="#" class="btn btn-primary btn-new pull-right">
+<a href="<?php echo base_url('modalidades/cadastrar'); ?>" class="btn btn-primary btn-new pull-right">
   Cadastrar modalidade
 </a>
 

@@ -11,7 +11,7 @@ class Usuarios extends MY_Controller {
 
 	function index() {
 
-		$data['usuarios'] = $this->usuario->find();
+		$data['usuarios'] = $this->usuario->find(array(), array('siape' => 'ASC'));
 
 		$this->pageTitle = 'Usuários';
 		$this->load->view('usuarios/index', $data);

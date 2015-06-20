@@ -18,6 +18,30 @@ class Modalidades extends MY_Controller {
 
 	}
 
+	function cadastrar() {
+
+		$this->form_validation->set_rules($this->modalidade->rules);
+
+		if (!$this->form_validation->run()) {
+
+			$this->pageTitle = 'Cadastrar Modalidade';
+			$this->load->view('modalidades/form');
+
+		} else {
+
+			$dados = array(
+				'nome' => $this->input->post('nome')
+				);
+			if ($this->modalidade->adicionarModalidade($dados)) {
+				$this->session->set_flashdata('message_success', 'Modalidade cadastrada com sucesso!');
+			} else {
+				$this->session->set_flashdata('message_error', 'Houve um erro');
+			}
+			redirect(base_url('modalidades'));
+		}
+
+	}
+
 	function atualizar() {
 
 		$id = $this->input->post('pk');

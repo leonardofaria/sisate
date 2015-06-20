@@ -6,49 +6,31 @@ class Usuario extends MY_Model {
 		'siape' => array(
 			'field' => 'siape',
 			'label' => 'Siape',
-			'rules' => 'trim|required|min_length[7]|max_length[7]',
-			'errors' => array(
-				'required' => 'É necessário informar o SIAPE',
-				'min_length' => 'O SIAPE deve ter 7 dígitos',
-				'max_length' => 'O SIAPE deve ter 7 dígitos',
-			)
+			'rules' => 'trim|required|min_length[7]|max_length[7]'
 		),
 
 		'nome' => array(
 			'field' => 'nome',
 			'label' => 'Nome',
-			'rules' => 'trim|required',
-			'errors' => array(
-				'required' => 'É necessário informar o nome'
-			)
+			'rules' => 'trim|required'
 		),
 
 		'email' => array(
 			'field' => 'email',
 			'label' => 'E-mail',
-			'rules' => 'trim|required',
-			'errors' => array(
-				'required' => 'É necessário informar o e-mail',
-				'email' => 'E-mail inválido'
-			)
+			'rules' => 'trim|required|valid_email'
 		),
 
 		'perfil' => array(
 			'field' => 'perfil',
 			'label' => 'Perfil',
-			'rules' => 'trim|required',
-			'errors' => array(
-				'required' => 'É necessário informar o perfil'
-			)
+			'rules' => 'trim|required'
 		),
 
 		'orgao' => array(
 			'field' => 'orgao',
 			'label' => 'Orgão',
-			'rules' => 'trim|required',
-			'errors' => array(
-				'required' => 'É necessário informar o órgão'
-			)
+			'rules' => 'trim|required'
 		)
 	);
 
