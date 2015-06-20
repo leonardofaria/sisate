@@ -20,7 +20,10 @@
 	<div class="navbar-inner">
 		<div class="container">
 			<div class="navbar-header">
-				 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Menu</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="<?php echo base_url(); ?>">SISATE</a>
+				 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Menu</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+				 <a class="navbar-brand" href="<?php echo base_url(); ?>">
+				 	SISATE <sup><?php echo (ENVIRONMENT == 'development') ? 'TESTE' : ''; ?></sup>
+				 </a>
 			</div>
 
 			<div class="collapse navbar-collapse">

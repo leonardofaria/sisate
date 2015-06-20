@@ -41,7 +41,9 @@
 		<div class="col-sm-6 col-md-4 col-md-offset-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<strong>SISATE ~ Entrar no sistema</strong>
+					<strong>
+						SISATE <?php echo (ENVIRONMENT == 'development') ? 'TESTE' : 'PRODUÇÃO'; ?> ~ Entrar no sistema
+					</strong>
 				</div>
 				<div class="panel-body">
 					<?php echo validation_errors(); ?>
@@ -81,8 +83,13 @@
 						</fieldset>
 					</form>
 				</div>
-				<div class="panel-footer ">
-					Utilize os dados do SISREF para entrar.
+				<div class="panel-footer text-center">
+					Utilize os dados do SISREF para entrar <br/>
+					<?php if (ENVIRONMENT == 'development') { ?>
+					<a href="/sisate">Acessar ambiente de produção</a>
+					<?php } else { ?>
+					<a href="/sisateteste">Acessar ambiente de teste</a>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
