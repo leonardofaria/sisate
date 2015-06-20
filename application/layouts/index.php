@@ -126,7 +126,7 @@
   	  <div class="col-md-6">
   	  	<p class="text-muted text-right">
   	  		<!-- Versão 1.0 ~ -->
-  	  		Criado na <a href="http://www-gexdiv">GEXDIV</a> <!-- ~ <a href="">Código aberto</a>-->
+  	  		Criado na <a href="http://www-gexdiv">GEXDIV</a> ~ <a href="https://github.com/leonardofaria/sisate">Código aberto</a>
   	  	</p>
   	  </div>
   	</div>
