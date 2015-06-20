@@ -30,8 +30,4 @@ Algumas partes do código estão comentadas com TODO indicando o que precisa ser
 - [ ] Melhorar a minificação de arquivos usando tasks do Gulp
 - [ ] Implementar na classe Usuario data do último acesso
 - [ ] Criar funcionalidade para alterar número do benefício
-- [ ] Melhorar validação no backend
-- [ ] Melhorar validação no frontend
-- [ ] Máscaras em telas de cadastro
-- [ ] Validações no frontend de Número de Benefício e CTC
-- [ ] Administrador: criar eventos, orgãos, modalidades, perfis
+- [ ] Log de acesso
