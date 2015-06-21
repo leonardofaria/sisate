@@ -33,10 +33,10 @@ class Processo extends MY_Model {
 		$config = array('upload_path' => './uploads/', 'allowed_types' => 'pdf', 'max_size' => '2048', 'multi' => 'all');
 		$this->load->library('upload', $config);
 
-		$orgao = $this->doctrine->em->getRepository('Entity\orgao');
+		$orgao = $this->doctrine->em->getRepository('Entity\Orgao');
 		$orgao = $orgao->findBy(array('id' => $this->orgao_id))[0];
 
-		$evento = $this->doctrine->em->getRepository('Entity\evento');
+		$evento = $this->doctrine->em->getRepository('Entity\Evento');
 		$evento = $evento->findBy(array('id' => 1))[0];
 
 		$processo = new Entity\Processo();
@@ -64,7 +64,7 @@ class Processo extends MY_Model {
 		$processo_evento->setCriado(new \DateTime("now"));
 		$processo_evento->setProcesso($processo);
 		$processo_evento->setEvento($evento);
-		$usuario = $this->doctrine->em->getRepository('Entity\usuario');
+		$usuario = $this->doctrine->em->getRepository('Entity\Usuario');
 		$usuario = $usuario->findBy(array('id' => $this->usuario_id))[0];
 		$processo_evento->setUsuario($usuario);
 

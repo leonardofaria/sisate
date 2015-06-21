@@ -28,7 +28,7 @@ class Orgao extends MY_Model {
 
 	public function adicionarOrgao($dados) {
 
-		$orgao = $this->doctrine->em->getRepository('Entity\orgao');
+		$orgao = $this->doctrine->em->getRepository('Entity\Orgao');
 
 		if (!$orgao->findBy(array('ol' => $dados['ol']))) {
 
@@ -46,7 +46,7 @@ class Orgao extends MY_Model {
 			if (strpos($dados['nome'], 'SECAO DE SAUDE DO TRABALHADOR') !== false) {
 				$modalidade_id = 2;
 			}
-			$modalidade = $this->doctrine->em->getRepository('Entity\modalidade');
+			$modalidade = $this->doctrine->em->getRepository('Entity\Modalidade');
 			$modalidade = $modalidade->findBy(array('id' => $modalidade_id))[0];
 			$orgao->setModalidade($modalidade);
 
