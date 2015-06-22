@@ -42,14 +42,12 @@ class Usuario extends MY_Model {
 
 		$usuario = $this->usuario->find(array('siape' => $dados['siape']));
 
-		if (!$usuario) {
+		if (count($usuario) == 0) {
 			return $this->adicionarUsuario($dados);
+		} else if (count($usuario) > 1) {
+			return $usuario;
 		} else {
-			if (count($usuario) > 1) {
-				return $usuario;
-			} else {
-				return $usuario[0];
-			}
+			return $usuario[0];
 		}
 
 	}
