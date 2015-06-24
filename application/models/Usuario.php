@@ -61,7 +61,7 @@ class Usuario extends MY_Model {
 		// Cadastro automático no primeiro acesso
 		if ($auto) {
 			// Força os médicos da GEXDIV se cadastrarem no SST
-			if (strpos($dados['ol'], '11023') !== false) {
+			if (strpos($dados['ol'], '11023') !== false && strpos($dados['cargo'], 'MEDICO') !== false) {
 				$dados['ol'] = '11423000';
 			}
 
