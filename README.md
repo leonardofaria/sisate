@@ -25,7 +25,6 @@ A autenticação do usuário é provida pelo SISREF. O cadastramento de usuário
 
 Algumas partes do código estão comentadas com TODO indicando o que precisa ser feito. Demais itens:
 
-- [ ] Criar página 404
 - [ ] Melhorar a legibilidade do código adequando-o ao PHP Style Guide (http://www.codeigniter.com/userguide3/general/styleguide.html)
 - [ ] Melhorar a minificação de arquivos usando tasks do Gulp
 - [ ] Implementar na classe Usuario data do último acesso
