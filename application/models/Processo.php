@@ -30,7 +30,7 @@ class Processo extends MY_Model {
 
 	public function inserir() {
 
-		$config = array('upload_path' => './uploads/', 'allowed_types' => 'pdf', 'max_size' => '2048', 'multi' => 'all');
+		$config = array('upload_path' => './uploads/', 'allowed_types' => 'pdf', 'max_size' => '20480', 'multi' => 'all');
 		$this->load->library('upload', $config);
 
 		$orgao = $this->doctrine->em->getRepository('Entity\Orgao');
