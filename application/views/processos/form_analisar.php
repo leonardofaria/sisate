@@ -33,7 +33,7 @@
         <div class="form-group">
           <?php echo form_label('Arquivos', 'analisar_arquivos', array('class' => 'col-sm-2 control-label')); ?>
           <div class="col-sm-10">
-            <?php echo form_upload(array('name' => 'uploadedfiles[]', 'multiple' => 'multiple', 'data-error' => 'É necessário anexar pelo menos um documento PDF', 'required' => 'required')); ?>
+            <?php echo form_upload(array('name' => 'uploadedfiles[]', 'multiple' => 'multiple', 'data-error' => 'É necessário anexar pelo menos um documento PDF')); ?>
             <div id="analisar_arquivos_erro" class="help-block with-errors"></div>
           </div>
         </div>
