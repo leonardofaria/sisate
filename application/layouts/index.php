@@ -63,13 +63,18 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span><strong class="caret"></strong></a>
 						<ul class="dropdown-menu">
 							<li role="presentation" class="dropdown-header">Perfis (<?php echo $this->siape; ?>): </li>
-							<li>
-								<?php
-									foreach ($this->perfis as $perfil) {
-										echo "<a href=\"" . base_url('conta/perfil/' . $perfil['usuario_id']) . "\">" . $perfil['ol'] . " - " . $perfil['perfil_nome'] . "</a>";
+							<?php
+								foreach ($this->perfis as $perfil) {
+									if ($perfil['perfil_id'] == $this->perfil_id && $perfil['ol'] == $this->ol) {
+										echo '<li class="active">';
+									} else {
+										echo '<li>';
 									}
-								?>
-							</li>
+
+									echo "<a href=\"" . base_url('conta/perfil/' . $perfil['usuario_id']) . "\">" . $perfil['ol'] . " - " . $perfil['perfil_nome'] . "</a></li>";
+								}
+							?>
+
 						</ul>
 					</li>
 					<?php } ?>
@@ -119,7 +124,9 @@
   	<div class="row">
   	  <div class="col-md-6">
   	  	<p class="text-muted">
-  	  		<span class="glyphicon glyphicon-user"></span> <?php echo $this->siape; ?> <!-- ~
+  	  		<span class="glyphicon glyphicon-user"></span>
+  	  		<?php echo $this->siape; ?> ~
+  	  		<?php echo $this->perfil_nome ; ?><!-- ~
   	  		<span class="glyphicon glyphicon-time"></span> Último acesso: -->
   	  	</p>
   	  </div>

@@ -18,6 +18,7 @@ class MY_Controller extends CI_Controller {
       $this->usuario_id = $session_data['usuario_id'];
       $this->orgao_id = $session_data['orgao_id'];
       $this->perfil_id = $session_data['perfil_id'];
+      $this->perfil_nome = $session_data['perfil_nome'];
       $this->orgao_modalidade_id = $session_data['orgao_modalidade_id'];
 
       if (isset($session_data['perfis'])) {

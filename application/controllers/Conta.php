@@ -53,7 +53,7 @@ class Conta extends CI_Controller{
           'orgao_id' => $usuario[0]->getOrgao()->getId(),
           'orgao_modalidade_id' => $usuario[0]->getOrgao()->getModalidade()->getId(),
           'perfil_id' => $usuario[0]->getPerfil()->getId(),
-
+          'perfil_nome' => $usuario[0]->getPerfil()->getNome(),
         );
 
         $usuarios = $this->usuario->find(array('siape' => $siape));
@@ -62,10 +62,12 @@ class Conta extends CI_Controller{
           $perfis[] = array(
             'usuario_id' => $u->getId(),
             'perfil_nome' => $u->getPerfil()->getNome(),
+            'perfil_id' => $u->getPerfil()->getId(),
             'ol' => $u->getOrgao()->getOl()
           );
         }
         $sess_array['perfis'] = $perfis;
+
 
         $this->session->set_userdata('logged_in', $sess_array);
         redirect(base_url());
@@ -102,6 +104,7 @@ class Conta extends CI_Controller{
           foreach ($usuario as $u) {
             $perfis[] = array(
               'usuario_id' => $u->getId(),
+              'perfil_id' => $u->getPerfil()->getId(),
               'perfil_nome' => $u->getPerfil()->getNome(),
               'ol' => $u->getOrgao()->getOl()
             );
@@ -115,6 +118,7 @@ class Conta extends CI_Controller{
         $sess_array['usuario_id'] = $usuario->getId();
         $sess_array['orgao_id'] = $usuario->getOrgao()->getId();
         $sess_array['perfil_id'] = $usuario->getPerfil()->getId();
+        $sess_array['perfil_nome'] = $usuario->getPerfil()->getNome();
         $sess_array['orgao_modalidade_id'] = $usuario->getOrgao()->getModalidade()->getId();
 
         $this->session->set_userdata('logged_in', $sess_array);
