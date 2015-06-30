@@ -101,6 +101,9 @@ class Api extends MY_Controller {
 				$evento = $this->evento->find(array('id' => $evento_id))[0];
 				$filter_not[] = array('ultimoevento' => $evento);
 			}
+		} else {
+			$evento = $this->evento->find(array('id' => 100))[0];
+			$filter_not[] = array('ultimoevento' => $evento);
 		}
 
 		$processos = $this->processo->find(array('orgaoatual' => $orgao), array($sort => $order), $page, $per_page, $filter_not);
