@@ -66,7 +66,7 @@ class Usuario extends MY_Model {
 			}
 
 			// Obtém ou cria o órgão do usuário
-			if ($this->orgao->find(array('ol' => $dados['ol']))) {
+			if ($this->orgao->find(array('ol' => $dados['ol']))[0]) {
 				$orgao = $this->orgao->find(array('ol' => $dados['ol']))[0];
 			} else {
 				$dados_orgao = array('ol' => $dados['ol'], 'nome' => $dados['lotacao']);
