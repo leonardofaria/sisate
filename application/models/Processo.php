@@ -123,6 +123,11 @@ class Processo extends MY_Model {
 		return $data;
 	}
 
+	public function obterProcessosArquivados() {
+		$orgao = $this->orgao->find(array('ol' => $this->ol))[0];
+		return $this->processo->find(array('orgaoatual' => $orgao), array('criado' => 'DESC'));
+	}
+
 	public function obterProcessosSST($ol) {
 
 		$orgao = $this->orgao->find(array('ol' => $ol))[0];

@@ -140,4 +140,17 @@ class Processos extends MY_Controller {
 		redirect(base_url('processos/visualizar/' . $id));
 
 	}
+
+	function arquivados() {
+
+		$this->load->model('usuario');
+		$this->load->model('orgao');
+		$this->load->model('perfil');
+
+		$data['processos'] = $this->processo->obterProcessosArquivados();
+
+		$this->pageTitle = 'Processos';
+		$this->load->view('processos/arquivados', $data);
+
+	}
 }

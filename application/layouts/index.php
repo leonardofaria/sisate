@@ -39,6 +39,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="<?php echo base_url('processos/cadastrar'); ?>"><span class="glyphicon glyphicon-file"></span> Cadastrar processo</a></li>
 							<li><a href="<?php echo base_url('processos/'); ?>"><span class="glyphicon glyphicon-duplicate"></span> Listar processos</a></li>
+							<li><a href="<?php echo base_url('processos/arquivados'); ?>"><span class="glyphicon glyphicon-duplicate"></span> Listar processos arquivados</a></li>
 
 				      <?php if ($this->perfil_id == 1) { ?>
 							<li class="divider">
