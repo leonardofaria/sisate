@@ -158,4 +158,13 @@ class MY_Model extends CI_Model {
 
   }
 
+  public function delete($id)
+  {
+
+    $entity = $this->doctrine->em->getPartialReference("Entity\\" . get_class($this), array('id' => $id));
+    $this->doctrine->em->remove($entity);
+    $this->doctrine->em->flush();
+
+  }
+
 }

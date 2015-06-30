@@ -87,6 +87,12 @@ class Processoevento extends MY_Model {
 			$this->processoevento->adicionarEvento($processo_id, 2, $complemento, 1, array(), $params);
 		}
 
+		// Ao arquivar um processo excluir o processo inicial já digitalizado
+		if ($evento_id == 100) {
+			$this->load->model('documento');
+			$this->documento->excluirProcessoInicial($processo_id);
+		}
+
 		return $processo->getId();
 
 	}
