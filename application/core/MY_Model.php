@@ -65,20 +65,45 @@ class MY_Model extends CI_Model {
 
   }
 
-  public function select_opts($filter = array())
+  public function select_opts($filter = array(), $order = array('id' => 'DESC'), $offset = 0, $per_page = 2000, $filter_not = array())
   {
 
     $query = $this->doctrine->em->getRepository("Entity\\" . get_class($this));
-    $options = array('' => 'Selecione', ' ' => ' ');
+    $criteria = new \Doctrine\Common\Collections\Criteria();
 
     if (count($filter) > 0)
     {
-      $results = $query->findBy($filter);
+      foreach ($filter as $key => $value)
+      {
+        $criteria->andWhere($criteria->expr()->eq($key, $value));
+      }
     }
-    else
+
+    $criteria->orderBy($order);
+    $criteria->setFirstResult($offset);
+    $criteria->setMaxResults($per_page);
+
+    if (count($filter_not) > 0)
     {
-      $results = $query->findAll();
+
+      foreach ($filter_not as $filter_key => $filter_value)
+      {
+        if (is_array($filter_value))
+        {
+          foreach ($filter_value as $filter_value_key => $filter_value_value)
+          {
+            $criteria->andWhere($criteria->expr()->neq($filter_value_key, $filter_value_value));
+          }
+        }
+        else
+        {
+          $criteria->andWhere($criteria->expr()->neq($filter_key, $filter_value));
+        }
+      }
     }
+
+    $results = $query->matching($criteria);
+    $options = array('' => 'Selecione', ' ' => ' ');
 
     foreach ($results as $row)
     {

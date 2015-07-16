@@ -80,7 +80,9 @@ class Processos extends MY_Controller {
 
 		$data['processo'] = $this->processo->find(array('id' => $id))[0];
 		$perfil = $this->perfil->find(array('id' => $this->perfil_id))[0];
-		$data['evento_select_opts'] = $this->evento->select_opts(array('perfil' => $perfil, 'ativo' => 'S'));
+		$excluir_eventos = array(array('id' => 1), array('id' => 2), array('id' => 8));
+		$data['evento_select_opts'] = $this->evento->select_opts(array('perfil' => $perfil, 'ativo' => 'S'), array()
+			, 0, 2000, $excluir_eventos);
 		$data['orgao_select_opts'] = $this->orgao->select_opts();
 
 		$orgao = $this->orgao->find(array('ol' => $this->ol))[0];
